@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Post() {
   const [posts, setPosts] = useState(null);
@@ -9,7 +12,6 @@ export default function Post() {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
-        'Api-key': 'jcbtxLoBz!Cc2Oq01G5wmltGsoIw!9Y&',
       },
     })
       .then((response) => {
@@ -19,22 +21,26 @@ export default function Post() {
       .catch((error) => console.error(error));
   }, []);
 
-   return (
-     <>
-       <h1>Welcome to my Blog</h1>
-       {posts ? (
-         <ul>
-           {posts.map((post) => (
-             <li key={post.id}>
-               <h2>{post.title}</h2>
-               <p>{post.content}</p>
-               <p>{post.date_formatted}</p>
-             </li>
-           ))}
-         </ul>
-       ) : (
-         <p>Loading posts...</p>
-       )}
-     </>
-   );
+  return (
+    <>
+      <h1>Welcome to my Blog</h1>
+      {posts ? (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <Link to={`/${post._id}`}>
+                <h2>{post.title}</h2>
+              </Link>
+              <p>{post.content}</p>
+              <p>{post.date_formatted}</p>
+              <FontAwesomeIcon icon={faComment} />
+              <p>{post.comments.length}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Loading posts...</p>
+      )}
+    </>
+  );
 }
