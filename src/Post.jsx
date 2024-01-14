@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 export default function Post() {
   const [posts, setPosts] = useState(null);
@@ -23,7 +24,7 @@ export default function Post() {
 
   return (
     <>
-      <h1>Welcome to my Blog</h1>
+      <Header />
       {posts ? (
         <ul>
           {posts.map((post) => (
