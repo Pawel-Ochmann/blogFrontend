@@ -10,7 +10,7 @@ export default function Post() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/${postId}`, {
+    fetch(`https://blogbackend.adaptable.app/${postId}`, {
       method: 'GET',
       mode: 'cors',
       headers: {

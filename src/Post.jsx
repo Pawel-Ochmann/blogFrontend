@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 
@@ -8,7 +6,7 @@ export default function Post() {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/', {
+    fetch('https://blogbackend.adaptable.app', {
       method: 'GET',
       mode: 'cors',
       headers: {

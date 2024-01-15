@@ -16,13 +16,16 @@ const CommentInput = ({ postId }) => {
   const submitComment = async () => {
     // Assuming you have an API endpoint to handle the comment submission
     try {
-      const response = await fetch(`http://localhost:3000/${postId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ author, content }),
-      });
+      const response = await fetch(
+        `https://blogbackend.adaptable.app/${postId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ author, content }),
+        }
+      );
       if (response.ok) {
         // Handle success, e.g., update UI or trigger a reload of comments
         console.log('Comment submitted successfully!');
@@ -35,11 +38,11 @@ const CommentInput = ({ postId }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents the default form submission and page reload
 
     if (author.trim() !== '' && content.trim() !== '') {
-      submitComment();
+      await submitComment();
       setAuthor('');
       setContent('');
       window.location.reload();
