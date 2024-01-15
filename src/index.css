@@ -183,6 +183,7 @@ img {
   text-align: center;
   padding: 5px 0;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .postList {
@@ -310,7 +311,7 @@ img {
       padding-bottom: 1rem;
       & .commentAuthor {
         text-transform: uppercase;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
         margin-top: 1rem;
       }
       & .commentDate {
@@ -325,7 +326,8 @@ img {
     flex-direction: column;
     padding: 3rem 5rem;
     gap: 1rem;
-    & input, & textarea {
+    & input,
+    & textarea {
       font-family: 'Libre Franklin', sans-serif;
       width: 100%;
       padding: 1rem;
@@ -335,19 +337,61 @@ img {
       text-transform: uppercase;
       width: max-content;
       align-self: center;
-      background-color: rgb(54,57,64);
+      background-color: rgb(54, 57, 64);
       color: white;
       font-weight: 600;
       padding: 5px 1.5rem;
       border: none;
-      transition: .3s;
+      transition: 0.3s;
       cursor: pointer;
       &:hover {
-        opacity: .7;
+        opacity: 0.7;
       }
     }
   }
 }
 .footerBreak {
-    margin: 2rem 0;
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 900px) {
+  .header {
+    & .headerButton {
+      display: none;
+    }
+    & nav {
+      padding: 3rem 0;
+      border-bottom: 1px solid grey;
+      border-top: 1px solid grey;
+      width: 100%;
+      margin: 5rem 0;
+      &.closed {
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+      }
+      &.closed li::before {
+        opacity: 1;
+        transition-delay: 0ms;
+      }
+      & ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        & li:before {
+          width: 100%;
+        }
+      }
+    }
   }
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    & .aboutMe {
+      padding: 0 2rem;
+      margin-left: 2rem;
+      border-left: 1px solid grey;
+    }
+  }
+}
