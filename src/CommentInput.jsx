@@ -47,30 +47,27 @@ const CommentInput = ({ postId }) => {
   };
 
   return (
-    <div>
-      <h2>Add a New Comment</h2>
+    <div className='commentInput'>
       <label>
-        User Name:
+        <textarea
+          value={content}
+          onChange={handleContentChange}
+          name='content'
+          placeholder='Comment'
+          required
+        ></textarea>
+      </label>
+      <label>
         <input
           type='text'
           value={author}
           onChange={handleAuthorChange}
           name='author'
+          placeholder='Author'
           required
         />
       </label>
-      <br />
-      <label>
-        Comment Content:
-        <textarea
-          value={content}
-          onChange={handleContentChange}
-          name='content'
-          required
-        ></textarea>
-      </label>
-      <br />
-      <button onClick={handleSubmit}>Add Comment</button>
+      <button className='roboto' onClick={handleSubmit}>Send</button>
     </div>
   );
 };
